@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# 🍌 Bananapedia - L'Encyclopédie Ultime des Bananes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?logo=vite)](https://vitejs.dev/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-Currently, two official plugins are available:
+> **Bananapedia** est une application web interactive et moderne dédiée à l'univers fascinant des bananes. Des espèces rares aux recettes gourmandes, devenez un expert du fruit le plus populaire au monde !
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ Fonctionnalités
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📖 Encyclopédie Interactive
+- **Catalogue exhaustif** : Parcourez plus de 10 espèces de bananes (Cavendish, Blue Java, Red Dacca, etc.).
+- **Recherche en temps réel** : Trouvez instantanément une variété par son nom ou sa description.
+- **Détails Scientifiques** : Accédez au nom latin, à l'origine géographique et aux profils gustatifs.
+- **Système de Favoris ❤️** : Sauvegardez vos bananes préférées localement (via `localStorage`).
 
-## Expanding the ESLint configuration
+### 🎮 Banana Quiz
+- Testez vos connaissances avec un mini-jeu interactif.
+- Score en temps réel et questions sur la botanique et la culture.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🍲 Recettes Gourmandes
+- Une sélection de recettes à base de bananes (Banana Bread, Smoothies).
+- Ingrédients détaillés et instructions pas-à-pas.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🌿 Culture & Histoire
+- Apprenez le cycle de vie du bananier (du rejet à la récolte).
+- Découvrez des "Fun Facts" surprenants sur chaque espèce.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🛠 Architecture du Projet
+
+L'application suit une structure modulaire pour une maintenance aisée :
+
+```text
+bananapedia/
+├── src/
+│   ├── components/       # Composants UI réutilisables
+│   │   ├── layout/       # Header, Footer, Navigation
+│   │   └── features/     # Cartes, Quiz, Listes
+│   ├── data/             # Bases de données JSON (bananes, recettes)
+│   ├── hooks/            # Logique métier (favoris, état)
+│   ├── types/            # Interfaces TypeScript centralisées
+│   ├── styles/           # Thèmes et styles CSS modulaires
+│   └── App.tsx           # Point d'entrée principal (Routing)
+├── public/               # Assets statiques
+└── README.md             # Documentation (vous êtes ici)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🚀 Installation Locale
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Pour lancer Bananapedia sur votre machine :
+
+### Pré-requis
+- [Node.js](https://nodejs.org/) (version 18 ou supérieure)
+- npm ou yarn
+
+### Étapes
+1. **Cloner le dépôt**
+   ```bash
+   git clone https://github.com/Seakluft/bananapedia.git
+   cd bananapedia
+   ```
+
+2. **Installer les dépendances**
+   ```bash
+   npm install
+   ```
+
+3. **Lancer le serveur de développement**
+   ```bash
+   npm run dev
+   ```
+   L'application sera accessible sur `http://localhost:5173`.
+
+---
+
+## 🍌 Pourquoi les bananes ?
+
+Botaniquement, la banane est une **baie** et le bananier est l'une des plus grandes **herbes** de la planète. Bananapedia a pour mission de célébrer cette biodiversité souvent ignorée par le grand public.
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! 
+1. Forkez le projet.
+2. Créez votre branche (`git checkout -b feature/AmazingFeature`).
+3. Committez vos changements (`git commit -m 'Add some AmazingFeature'`).
+4. Pushez vers la branche (`git push origin feature/AmazingFeature`).
+5. Ouvrez une Pull Request.
+
+---
+
+## 📜 Licence
+
+Distribué sous la licence MIT. Voir `LICENSE` pour plus d'informations.
+
+---
+*Fait avec ❤️ par Seakluft (et un peu d'aide fruitée).*
