@@ -1,12 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import { BANANA_DATA, BananaSpecies } from './data/bananas';
 
-function BananaCard({ species }: { species: BananaSpecies }) {
+function BananaCard({ species, isFavorite, onToggleFavorite }: { 
+  species: BananaSpecies, 
+  isFavorite: boolean, 
+  onToggleFavorite: (id: string) => void 
+}) {
   return (
     <div className="banana-card">
       <div className="card-image-container">
         <img src={species.imageUrl} alt={species.name} className="card-image" />
+        <button 
+          className={`favorite-btn ${isFavorite ? 'active' : ''}`}
+          onClick={() => onToggleFavorite(species.id)}
+          title={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
+        >
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
         <span className="usage-badge">{species.usage}</span>
       </div>
       <div className="card-content">
@@ -36,11 +47,32 @@ function BananaCard({ species }: { species: BananaSpecies }) {
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('');
+  const [favorites, setFavorites] = useState<string[]>([]);
+  const [showOnlyFavorites, setShowOnlyFavorites] = useState(false);
 
-  const filteredBananas = BANANA_DATA.filter(banana => 
-    banana.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    banana.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Charger les favoris depuis le localStorage au démarrage
+  useEffect(() => {
+    const savedFavorites = localStorage.getItem('banana-favorites');
+    if (savedFavorites) {
+      setFavorites(JSON.parse(savedFavorites));
+    }
+  }, []);
+
+  const toggleFavorite = (id: string) => {
+    const newFavorites = favorites.includes(id)
+      ? favorites.filter(favId => favId !== id)
+      : [...favorites, id];
+    
+    setFavorites(newFavorites);
+    localStorage.setItem('banana-favorites', JSON.stringify(newFavorites));
+  };
+
+  const filteredBananas = BANANA_DATA.filter(banana => {
+    const matchesSearch = banana.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         banana.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFavorite = showOnlyFavorites ? favorites.includes(banana.id) : true;
+    return matchesSearch && matchesFavorite;
+  });
 
   return (
     <div className="app">
@@ -60,17 +92,65 @@ function App() {
           />
         </div>
 
+        <div className="filters-container">
+          <button 
+            className={`filter-btn ${!showOnlyFavorites ? 'active' : ''}`}
+            onClick={() => setShowOnlyFavorites(false)}
+          >
+            Toutes les bananes
+          </button>
+          <button 
+            className={`filter-btn ${showOnlyFavorites ? 'active' : ''}`}
+            onClick={() => setShowOnlyFavorites(true)}
+          >
+            Mes Favoris ❤️ ({favorites.length})
+          </button>
+        </div>
+
         <div className="banana-grid">
           {filteredBananas.length > 0 ? (
             filteredBananas.map(banana => (
-              <BananaCard key={banana.id} species={banana} />
+              <BananaCard 
+                key={banana.id} 
+                species={banana} 
+                isFavorite={favorites.includes(banana.id)}
+                onToggleFavorite={toggleFavorite}
+              />
             ))
           ) : (
-            <p style={{ textAlign: 'center', gridColumn: '1/-1', padding: '2rem' }}>
-              Aucune banane ne correspond à votre recherche. 🍌😢
+            <p style={{ textAlign: 'center', gridColumn: '1/-1', padding: '4rem' }}>
+              {showOnlyFavorites 
+                ? "Vous n'avez pas encore de bananes favorites. 🍌" 
+                : "Aucune banane ne correspond à votre recherche. 🍌😢"}
             </p>
           )}
         </div>
+
+        <section className="cultivation-section">
+          <h2 style={{ textAlign: 'center', color: 'var(--banana-brown)' }}>Le Cycle de Vie du Bananier</h2>
+          <div className="cultivation-grid">
+            <div className="step-card">
+              <span className="step-icon">🌱</span>
+              <h3>Le Rejet</h3>
+              <p>Le bananier n'est pas un arbre mais une herbe. Il se multiplie par des rejets qui poussent à partir du rhizome souterrain.</p>
+            </div>
+            <div className="step-card">
+              <span className="step-icon">🌿</span>
+              <h3>Croissance</h3>
+              <p>En 9 mois, le bananier atteint sa taille adulte. Ses feuilles géantes captent l'énergie du soleil tropical.</p>
+            </div>
+            <div className="step-card">
+              <span className="step-icon">🌺</span>
+              <h3>La Fleur</h3>
+              <p>Un bourgeon violet massif apparaît. Sous chaque pétale, de minuscules fleurs se transforment en bananes sans pollinisation.</p>
+            </div>
+            <div className="step-card">
+              <span className="step-icon">🍌</span>
+              <h3>La Récolte</h3>
+              <p>Une fois le régime mûr, le pied mère meurt, laissant la place à un nouveau rejet pour recommencer le cycle.</p>
+            </div>
+          </div>
+        </section>
       </div>
 
       <footer>

@@ -56,25 +56,47 @@ export const BANANA_DATA: BananaSpecies[] = [
     funFact: 'Elle contient plus de bêta-carotène et de vitamine C que les bananes jaunes.'
   },
   {
-    id: 'gros-michel',
-    name: 'Gros Michel',
-    scientificName: 'Musa acuminata (AAA Group)',
-    origin: 'Asie du Sud-Est',
-    description: 'L\'ancienne reine du marché mondial avant les années 1950.',
-    taste: 'Plus riche, plus crémeuse et plus parfumée que la Cavendish.',
+    id: 'manzano',
+    name: 'Manzano (Banane Pomme)',
+    scientificName: 'Musa acuminata x balbisiana (AAB)',
+    origin: 'Amérique Centrale et du Sud',
+    description: 'Petite banane trapue avec une peau fine qui devient noire à maturité complète.',
+    taste: 'Saveur complexe rappelant la pomme et la fraise.',
     usage: 'dessert',
-    imageUrl: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&q=80&w=400',
-    funFact: 'C\'est cette banane qui a inspiré l\'arôme artificiel de banane des bonbons.'
+    imageUrl: 'https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=800',
+    funFact: 'Elle est très appréciée pour sa texture ferme même lorsqu\'elle est très mûre.'
   },
   {
-    id: 'lady-finger',
-    name: 'Lady Finger',
-    scientificName: 'Musa acuminata (AA Group)',
-    origin: 'Asie du Sud-Est / Australie',
-    description: 'Petites bananes fines et très sucrées.',
-    taste: 'Extrêmement sucrée avec une texture ferme.',
-    usage: 'dessert',
-    imageUrl: 'https://images.unsplash.com/photo-1571771894821-ad99024177c8?auto=format&fit=crop&q=80&w=800',
-    funFact: 'Elles ne brunissent pas aussi vite que les autres bananes une fois coupées.'
+    id: 'goldfinger',
+    name: 'Goldfinger',
+    scientificName: 'Musa FHIA-01',
+    origin: 'Honduras',
+    description: 'Hybride créé pour résister aux maladies. Très polyvalente.',
+    taste: 'Légèrement acide et rafraîchissante.',
+    usage: 'both',
+    imageUrl: 'https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&q=80&w=401',
+    funFact: 'C\'est la première banane de type "Gros Michel" résistante créée par l\'homme.'
+  },
+  {
+    id: 'praying-hands',
+    name: 'Praying Hands',
+    scientificName: 'Musa ABB Group',
+    origin: 'Indonésie',
+    description: 'Ses fruits fusionnent entre eux, ressemblant à deux mains jointes en prière.',
+    taste: 'Goût vanillé avec une texture de pomme de terre cuite.',
+    usage: 'both',
+    imageUrl: 'https://images.unsplash.com/photo-1588102372579-340cc53630f7?auto=format&fit=crop&q=80&w=800',
+    funFact: 'Une main entière de bananes doit être séparée au couteau car les fruits sont soudés.'
+  },
+  {
+    id: 'fehi',
+    name: 'Fe\'i (Banane Orange)',
+    scientificName: 'Musa troglodytarum',
+    origin: 'Polynésie',
+    description: 'Ses régimes poussent vers le ciel plutôt que vers le sol.',
+    taste: 'Acidulée, elle est presque toujours consommée cuite.',
+    usage: 'cooking',
+    imageUrl: 'https://images.unsplash.com/photo-1629828854005-0e1f7278377f?auto=format&fit=crop&q=80&w=800',
+    funFact: 'Sa sève violette était autrefois utilisée comme colorant naturel.'
   }
 ];
