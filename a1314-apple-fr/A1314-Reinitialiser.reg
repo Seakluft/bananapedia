@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+; Supprime la disposition "French (Apple)" et restaure Alt / AltGr d'origine
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a000040c]
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,01,00,00,00,00,00,00,00
