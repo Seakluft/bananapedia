@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; Enregistre la disposition "French (Apple)" (AZERTY Mac, layout macOS)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layouts\a000040c]
+"Layout File"="Apple-FR.dll"
+"Layout Id"="00c0"
+"Layout Text"="French (Apple)"
+
+; Echange Option gauche (Alt, SC038) et AltGr (Alt droit, SC e038)
+; => la touche ⌥ du A1314 agit comme AltGr et produit la couche Option du layout Mac
+; (38,e0,38,00 : SC038 -> SC e0 38 | 38,00,38,e0 : SC e0 38 -> SC038)
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Keyboard Layout]
+"Scancode Map"=hex:00,00,00,00,00,00,00,00,03,00,00,00,38,e0,38,00,38,00,38,e0,00,00,00,00
